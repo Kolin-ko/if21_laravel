@@ -1,41 +1,65 @@
-  <!--begin::Row-->
-            <div class="row">
-              <div class="col-12">
-                <!-- Default box -->
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Fakultas</h3>
-                    <div class="card-tools">
-                      <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-collapse"
-                        title="Collapse"
-                      >
-                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+@extends('main')
+
+@section('title', 'Fakultas')
+@section('content')
+
+<!--begin::Row-->
+<div class="row">
+  <div class="col-12">
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Fakultas</h3>
+        <div class="card-tools">
+          <button
+          type="button"
+          class="btn btn-tool"
+          data-lte-toggle="card-collapse"
+          title="Collapse"
+          >
+          <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+          <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
                       </button>
                       <button
-                        type="button"
-                        class="btn btn-tool"
-                        data-lte-toggle="card-remove"
-                        title="Remove"
+                      type="button"
+                      class="btn btn-tool"
+                      data-lte-toggle="card-remove"
+                      title="Remove"
                       >
-                        <i class="bi bi-x-lg"></i>
-                      </button>
-                    </div>
+                      <i class="bi bi-x-lg"></i>
+                    </button>
                   </div>
-                  <div class="card-body">
-                    @foreach ($fakultas as $item)
-                        {{ $item->nama }}
-                        {{ $item->singkatan }}
-                    @endforeach
                 </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">Footer</div>
-                  <!-- /.card-footer-->
+                <div class="card-body">
+                 
+                  <table class = 'table'>
+                    <thead>
+                      <tr>
+                        <th>Nama</th>
+                        <th>Singkatan</th>
+                        <th>Nama Dekan</th>
+                        <th>Nama Wakil Dekan</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  @foreach ($fakultas as $item)
+                  <tr>
+                  <td>{{ $item->nama }}</td>
+                  <td>{{ $item->singkatan }}</td>
+                  <td>{{ $item->nama_dekan }}</td>
+                  <td>{{ $item->nama_wadek }}</td>
+                  </tr>
+                  @endforeach
+                    </tbody>
+                  </table>
+
                 </div>
-                <!-- /.card -->
+                <!-- /.card-body -->
+                <div class="card-footer">Footer</div>
+                <!-- /.card-footer-->
               </div>
+              <!-- /.card -->
             </div>
-            <!--end::Row-->
+          </div>
+          <!--end::Row-->
+@endsection
