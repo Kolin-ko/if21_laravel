@@ -21,7 +21,7 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        //
+        return view('prodi.create');
     }
 
     /**
@@ -29,7 +29,18 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $input = $request->validate([
+            'nama' => 'required|unique:prodi',
+            'singkatan' => 'required',
+            'kaprodi' => 'required',
+            'sekretaris' => 'required'
+        ]);
+        // simpan ke tabel fakultas
+        Fakultas::create($input);
+
+        // redirect ke route fakultas.index
+        return redirect() -> route('prodi.index')
+                            ->with('success', 'Prodi berhasil disimpan');
     }
 
     /**

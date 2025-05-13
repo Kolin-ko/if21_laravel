@@ -62,9 +62,9 @@
                 <i class="bi bi-list"></i>
               </a>
             </li>
-            <li class="nav-item d-none d-md-block"><a href="fakultas" class="nav-link">Fakultas</a></li>
-            <li class="nav-item d-none d-md-block"><a href="prodi" class="nav-link">Program Studi</a></li>
-            <li class="nav-item d-none d-md-block"><a href="mahasiswa" class="nav-link">Mahasiswa</a></li>
+            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Fakultas</a></li>
+            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Program Studi</a></li>
+            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Mahasiswa</a></li>
           </ul>
           <!--end::Start Navbar Links-->
           <!--begin::End Navbar Links-->
