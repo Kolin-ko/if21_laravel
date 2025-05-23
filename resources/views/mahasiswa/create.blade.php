@@ -47,32 +47,34 @@
                         <label for="jk" class="form-label">Jenis Kelamin</label>
                         <input type="radio" name="jk" id="" value="L" {{old('jk') == 'L' ? 'selected' : null}}>Laki-Laki
                         <input type="radio" name="jk" id="" value="P" {{old('jk') == 'P' ? 'selected' : null}}>Perempuan
-                      </div>
-                       @error('jk')
+                        @error('jk')
                         <div class="text-danger">{{ $message }}</div>
+                      </div>
                     @enderror
                      <div class="mb-3">
                         <label for="asal_sma" class="form-label">Asal SMA</label>
                         <input type="text" class="form-control" name="asal_sma" value="{{old('asal_sma')}}"> 
-                        </div>
-                         @error('asal_sma')
+                        @error('asal_sma')
                         <div class="text-danger">{{ $message }}</div>
+                      </div>
                     @enderror
                       <div class="mb-3">
                         <label for="foto" class="form-label">Foto</label>
                         <input type="file" class="form-control" name="foto"> 
-                      </div>
-                       @error('foto')
+                        @error('foto')
                         <div class="text-danger">{{ $message }}</div>
-                    @enderror
+                        @enderror
+                      </div>
                          <div class="mb-3">
-                        <label for="prodi_id" class="form-label">program studi</label>
+                        <label for="prodi_id" class="form-label">Program studi</label>
                         <select name="prodi_id" class="form-control">
                             @foreach ($prodi as $item)
-                            <option value="{{ $item->id }}"> {{ $item->nama }}</option>
+                              <option value="{{ $item->id }}" {{ old('prodi_id') == $item->id ? "selected" : null }}> {{ $item->nama }} </option>
                             @endforeach
                         </select>
-                        
+                         @error('prodi_id')
+                          <div class="text-danger">{{ $message }}</div>
+                        @enderror
 
                       </div>
                     <!--end::Body-->

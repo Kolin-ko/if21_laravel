@@ -11,7 +11,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Prodi</h3>
+        <h3 class="card-title">Mahasiswa</h3>
         <div class="card-tools">
           <button
           type="button"
@@ -33,27 +33,33 @@
                   </div>
                 </div>
                 <div class="card-body">
-                 
+                  <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah</a>
                   <table class = 'table'>
                     <thead>
                       <tr>
-                        <th>npm</th>
                         <th>Nama</th>
+                        <th>NPM</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
                         <th>Jenis Kelamin</th>
+                        <th>Asal SMA</th>
+                        <th>Foto</th>
                         <th>Program Studi</th>
                         <th>Fakultas</th>
-                        <th>Tanggal Lahir</th>
                       </tr>
                     </thead>
                     <tbody>
                   @foreach ($mahasiswa as $item)
                   <tr>
-                  <td>{{ $item->npm }}</td>
                   <td>{{ $item->nama }}</td>
-                  <td>{{ $item->jk }}</td>
-                  <td>{{ $item->prodi->nama }}</td>
-                  <td>{{ $item->prodi->fakultas->nama }} </td>
+                  <td>{{ $item->npm }}</td>
+                  <td>{{ $item->tempat_lahir }}</td>
                   <td>{{ $item->tanggal_lahir }}</td>
+                  <td>{{ $item->jk }}</td>
+                  <td>{{ $item->asal_sma }}</td>
+                  <td><img src="{{ asset('storage/images/' . $item->foto) }}" alt="foto" width="50px"></td>
+                  <td>{{ $item->prodi->nama }}</td>
+                  <td>{{ $item->prodi->fakultas->nama}} </td>
                   </tr>
                   @endforeach
                     </tbody>

@@ -23,7 +23,6 @@ class FakultasController extends Controller
      */
     public function create()
     {
-        $fakultas = Fakultas::all;
         return view('fakultas.create');
     }
 
