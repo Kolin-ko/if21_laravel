@@ -1,4 +1,3 @@
-<h1>Mahasiswa</h1>
 
 @extends('main')
 
@@ -11,7 +10,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Prodi</h3>
+        <h3 class="card-title">Mahasiswa</h3>
         <div class="card-tools">
           <button
           type="button"
@@ -33,27 +32,62 @@
                   </div>
                 </div>
                 <div class="card-body">
-                 
+<<<<<<< HEAD
+                  <a href="{{ route('mahasiswa.create') }}" type="button" class="btn btn-primary btn-rounded btn-fw"><i class="bi bi-person-add"></i></a>
+                  @if (Session::get('success'))
+                  <div class="alert alert-success mt-3">{{ Session::get('success') }}</div>
+              @endif
+=======
+                  <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah</a>
+>>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
                   <table class = 'table'>
                     <thead>
                       <tr>
-                        <th>npm</th>
                         <th>Nama</th>
+                        <th>NPM</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
                         <th>Jenis Kelamin</th>
+                        <th>Asal SMA</th>
+                        <th>Foto</th>
+<<<<<<< HEAD
+                        <th>Program Studi</th>  
+                        <th>Fakultas</th>
+                        <th>Aksi</th>
+=======
                         <th>Program Studi</th>
                         <th>Fakultas</th>
-                        <th>Tanggal Lahir</th>
+>>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
                       </tr>
                     </thead>
                     <tbody>
                   @foreach ($mahasiswa as $item)
                   <tr>
-                  <td>{{ $item->npm }}</td>
                   <td>{{ $item->nama }}</td>
+                  <td>{{ $item->npm }}</td>
+                  <td>{{ $item->tempat_lahir }}</td>
+                  <td>{{ $item->tanggal_lahir }}</td>
                   <td>{{ $item->jk }}</td>
+                  <td>{{ $item->asal_sma }}</td>
+<<<<<<< HEAD
+                  <td><img src="{{ asset('storage/images/' . $item->foto) }}" alt="Foto" width="50"></td>
                   <td>{{ $item->prodi->nama }}</td>
                   <td>{{ $item->prodi->fakultas->nama }} </td>
-                  <td>{{ $item->tanggal_lahir }}</td>
+                  <td>
+                  <a href="{{ route('mahasiswa.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a>
+                    <form method="POST" action="{{ route('mahasiswa.destroy', $item->id) }}">
+                      @csrf
+                      <input name="_method" type="hidden" value="DELETE">
+                      <button type="submit" class="btn btn-xs btn-danger btn-rounded show_confirm"
+                          data-toggle="tooltip" title='Delete'
+                          data-nama='{{ $item->nama }}'><i class="bi bi-trash"></i></button>
+                    </form>
+                  </td>
+=======
+                  <td><img src="{{ asset('storage/images/' . $item->foto) }}" alt="foto" width="50px"></td>
+                  <td>{{ $item->prodi->nama }}</td>
+                  <td>{{ $item->prodi->fakultas->nama}} </td>
+>>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
                   </tr>
                   @endforeach
                     </tbody>

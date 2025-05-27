@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fakultas;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,12 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        return view('prodi.create');
+        $fakultas = Fakultas::all();
+<<<<<<< HEAD
+        return view('prodi.create', compact('fakultas'));
+=======
+        return view('prodi.create',  compact('fakultas'));
+>>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
     }
 
     /**
@@ -33,10 +39,16 @@ class ProdiController extends Controller
             'nama' => 'required|unique:prodi',
             'singkatan' => 'required',
             'kaprodi' => 'required',
-            'sekretaris' => 'required'
+            'sekretaris' => 'required',
+            'fakultas_id' => 'required'
         ]);
+
         // simpan ke tabel fakultas
-        Fakultas::create($input);
+<<<<<<< HEAD
+        Prodi::create($input);
+=======
+        Prodi::create($input); 
+>>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
 
         // redirect ke route fakultas.index
         return redirect() -> route('prodi.index')
@@ -54,17 +66,30 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prodi $prodi)
+    public function edit($prodi)
     {
-        //
+        $prodi = Prodi::findOrFail($prodi);
+        $fakultas = Fakultas::all();
+        // dd($fakultas);
+        return view('prodi.edit', compact('prodi', 'fakultas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prodi $prodi)
+    public function update(Request $request, $prodi)
     {
-        //
+        $prodi = Prodi::findOrFail($prodi);
+        $input = $request->validate([
+            'nama' => 'required',
+            'singkatan' => 'required',
+            'kaprodi' => 'required',
+            'sekretaris' => 'required',
+            'fakultas_id' => 'required'
+        ]);
+        $prodi->update($input);
+        return redirect()->route('prodi.index')
+                         ->with('success', 'Prodi berhasil diupdate');
     }
 
     /**
@@ -72,6 +97,8 @@ class ProdiController extends Controller
      */
     public function destroy(Prodi $prodi)
     {
-        //
+        $prodi->delete();
+        return redirect()->route('prodi.index')
+                         ->with('success', 'Prodi berhasil dihapus');
     }
 }
