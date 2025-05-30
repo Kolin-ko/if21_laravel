@@ -32,14 +32,10 @@
                   </div>
                 </div>
                 <div class="card-body">
-<<<<<<< HEAD
                   <a href="{{ route('mahasiswa.create') }}" type="button" class="btn btn-primary btn-rounded btn-fw"><i class="bi bi-person-add"></i></a>
                   @if (Session::get('success'))
                   <div class="alert alert-success mt-3">{{ Session::get('success') }}</div>
               @endif
-=======
-                  <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah</a>
->>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
                   <table class = 'table'>
                     <thead>
                       <tr>
@@ -50,14 +46,9 @@
                         <th>Jenis Kelamin</th>
                         <th>Asal SMA</th>
                         <th>Foto</th>
-<<<<<<< HEAD
                         <th>Program Studi</th>  
                         <th>Fakultas</th>
                         <th>Aksi</th>
-=======
-                        <th>Program Studi</th>
-                        <th>Fakultas</th>
->>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
                       </tr>
                     </thead>
                     <tbody>
@@ -69,7 +60,6 @@
                   <td>{{ $item->tanggal_lahir }}</td>
                   <td>{{ $item->jk }}</td>
                   <td>{{ $item->asal_sma }}</td>
-<<<<<<< HEAD
                   <td><img src="{{ asset('storage/images/' . $item->foto) }}" alt="Foto" width="50"></td>
                   <td>{{ $item->prodi->nama }}</td>
                   <td>{{ $item->prodi->fakultas->nama }} </td>
@@ -83,11 +73,6 @@
                           data-nama='{{ $item->nama }}'><i class="bi bi-trash"></i></button>
                     </form>
                   </td>
-=======
-                  <td><img src="{{ asset('storage/images/' . $item->foto) }}" alt="foto" width="50px"></td>
-                  <td>{{ $item->prodi->nama }}</td>
-                  <td>{{ $item->prodi->fakultas->nama}} </td>
->>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
                   </tr>
                   @endforeach
                     </tbody>

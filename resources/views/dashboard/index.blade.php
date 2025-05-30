@@ -19,6 +19,28 @@
     </p>
 </figure>
 
+<figure class="highcharts-figure">
+    <div id="container-asalsma"></div>
+    <p class="highcharts-description">
+        A basic column chart comparing estimated corn and wheat production
+        in some countries.
+
+        The chart is making use of the axis crosshair feature, to highlight
+        the hovered country.
+    </p>
+</figure>
+
+<figure class="highcharts-figure">
+    <div id="container-tahunmasuk"></div>
+    <p class="highcharts-description">
+        A basic column chart comparing estimated corn and wheat production
+        in some countries.
+
+        The chart is making use of the axis crosshair feature, to highlight
+        the hovered country.
+    </p>
+</figure>
+
 {{-- CSS --}}
 <style>
     .highcharts-figure,
@@ -76,12 +98,13 @@
 
 {{-- JavaScript --}}
 <script>
+
 Highcharts.chart('container', {
     chart: {
         type: 'column'
     },
     title: {
-        text: 'Corn vs wheat estimated production for 2023'
+        text: 'Jumlah Mahasiswa'
     },
     subtitle: {
         text:
@@ -89,7 +112,12 @@ Highcharts.chart('container', {
             'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>'
     },
     xAxis: {
-        categories: ['USA', 'China', 'Brazil', 'EU', 'Argentina', 'India'],
+        categories: [
+            @foreach ($mahasiswaprodi as $item)
+            '{{ $item -> nama }}'
+            @endforeach
+
+        ],
         crosshair: true,
         accessibility: {
             description: 'Countries'
@@ -98,11 +126,11 @@ Highcharts.chart('container', {
     yAxis: {
         min: 0,
         title: {
-            text: '1000 metric tons (MT)'
+            text: 'Mahasiswa'
         }
     },
     tooltip: {
-        valueSuffix: ' (1000 MT)'
+        valueSuffix: 'Orang'
     },
     plotOptions: {
         column: {
@@ -112,16 +140,111 @@ Highcharts.chart('container', {
     },
     series: [
         {
-            name: 'Corn',
-            data: [387749, 280000, 129000, 64300, 54000, 34300]
-        },
-        {
-            name: 'Wheat',
-            data: [45321, 140000, 10000, 140500, 19500, 113500]
+            name: 'mahasiswa',
+            data: [@foreach ($mahasiswaprodi as $item)
+            {{  $item -> jumlah }},
+            @endforeach]
         }
     ]
 });
 
+
+Highcharts.chart('container-asalsma', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Jumlah Asal Sma'
+    },
+    subtitle: {
+        text:
+            'Source: <a target="_blank" ' +
+            'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>'
+    },
+    xAxis: {
+        categories: [
+            @foreach ($mahasiswaasalsma as $item)
+            '{{ $item -> asal_sma }}'
+            @endforeach
+
+        ],
+        crosshair: true,
+        accessibility: {
+            description: 'Program Studi'
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah'
+        }
+    },
+    tooltip: {
+        valueSuffix: 'Orang'
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [
+        {
+            name: 'Asal sma',
+            data: [@foreach ($mahasiswaasalsma as $item)
+            {{  $item -> jumlah }},
+            @endforeach]
+        }
+    ]
+});
+Highcharts.chart('container-tahunmasuk', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Jumlah Tahun Masuk'
+    },
+    subtitle: {
+        text:
+            'Source: <a target="_blank" ' +
+            'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>'
+    },
+    xAxis: {
+        categories: [
+            @foreach ($mahasiswatahunmasuk as $item)
+            '{{ $item -> tahun }}'
+            @endforeach
+
+        ],
+        crosshair: true,
+        accessibility: {
+            description: 'Program Studi'
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah'
+        }
+    },
+    tooltip: {
+        valueSuffix: 'Orang'
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [
+        {
+            name: 'Asal sma',
+            data: [@foreach ($mahasiswatahunmasuk as $item)
+            {{  $item -> jumlah }},
+            @endforeach]
+        }
+    ]
+});
 </script>
 
 
