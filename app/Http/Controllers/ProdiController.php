@@ -24,7 +24,6 @@ class ProdiController extends Controller
     {
         $fakultas = Fakultas::all();
         return view('prodi.create', compact('fakultas'));
-        return view('prodi.create',  compact('fakultas'));
     }
 
     /**
