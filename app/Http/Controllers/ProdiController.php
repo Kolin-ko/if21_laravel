@@ -23,11 +23,8 @@ class ProdiController extends Controller
     public function create()
     {
         $fakultas = Fakultas::all();
-<<<<<<< HEAD
         return view('prodi.create', compact('fakultas'));
-=======
         return view('prodi.create',  compact('fakultas'));
->>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
     }
 
     /**
@@ -44,11 +41,8 @@ class ProdiController extends Controller
         ]);
 
         // simpan ke tabel fakultas
-<<<<<<< HEAD
         Prodi::create($input);
-=======
         Prodi::create($input); 
->>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
 
         // redirect ke route fakultas.index
         return redirect() -> route('prodi.index')

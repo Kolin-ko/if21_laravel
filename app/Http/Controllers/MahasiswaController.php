@@ -31,25 +31,15 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
         $input = $request->validate([
             'nama' => 'required',
-            'npm' => 'required|unique:mahasiswas',
-=======
-          $input = $request->validate([
-            'nama' => 'required',
             'npm' => 'required|unique:mahasiswa',
->>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required|date',
             'jk' => 'required',
             'asal_sma' => 'required',
             'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-<<<<<<< HEAD
             'prodi_id' => 'required',
-=======
-            'prodi_id' => 'required'
->>>>>>> e5409382a023b42d2b33e423ed2b1bfed838dd40
         ]);
 
         if ($request->hasFile('foto')) {
