@@ -31,7 +31,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-          $input = $request->validate([
+        $input = $request->validate([
             'nama' => 'required',
             'npm' => 'required|unique:mahasiswa',
             'tempat_lahir' => 'required',
@@ -39,7 +39,7 @@ class MahasiswaController extends Controller
             'jk' => 'required',
             'asal_sma' => 'required',
             'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'prodi_id' => 'required'
+            'prodi_id' => 'required',
         ]);
 
         if ($request->hasFile('foto')) {
@@ -85,6 +85,7 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        $mahasiswa->delete();
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa deleted successfully.');
     }
 }

@@ -23,7 +23,7 @@ class ProdiController extends Controller
     public function create()
     {
         $fakultas = Fakultas::all();
-        return view('prodi.create',  compact('fakultas'));
+        return view('prodi.create', compact('fakultas'));
     }
 
     /**
@@ -40,7 +40,8 @@ class ProdiController extends Controller
         ]);
 
         // simpan ke tabel fakultas
-        Prodi::create($input); 
+        Prodi::create($input);
+        Prodi::create($input);
 
         // redirect ke route fakultas.index
         return redirect() -> route('prodi.index')
@@ -58,17 +59,30 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prodi $prodi)
+    public function edit($prodi)
     {
-        //
+        $prodi = Prodi::findOrFail($prodi);
+        $fakultas = Fakultas::all();
+        // dd($fakultas);
+        return view('prodi.edit', compact('prodi', 'fakultas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prodi $prodi)
+    public function update(Request $request, $prodi)
     {
-        //
+        $prodi = Prodi::findOrFail($prodi);
+        $input = $request->validate([
+            'nama' => 'required',
+            'singkatan' => 'required',
+            'kaprodi' => 'required',
+            'sekretaris' => 'required',
+            'fakultas_id' => 'required'
+        ]);
+        $prodi->update($input);
+        return redirect()->route('prodi.index')
+                         ->with('success', 'Prodi berhasil diupdate');
     }
 
     /**
@@ -76,6 +90,8 @@ class ProdiController extends Controller
      */
     public function destroy(Prodi $prodi)
     {
-        //
+        $prodi->delete();
+        return redirect()->route('prodi.index')
+                         ->with('success', 'Prodi berhasil dihapus');
     }
 }

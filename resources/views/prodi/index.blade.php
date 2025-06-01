@@ -31,7 +31,10 @@
                   </div>
                 </div>
                 <div class="card-body">
-                 <a href="{{ route('prodi.create') }}" class="btn btn-primary">Tambah</a>
+                  <a href="{{ route('prodi.create') }}" type="button" class="btn btn-primary btn-rounded btn-fw"><i class="bi bi-database-add"></i></a>
+                  @if (Session::get('success'))
+                  <div class="alert alert-success mt-3">{{ Session::get('success') }}</div>
+              @endif
                   <table class = 'table'>
                     <thead>
                       <tr>
@@ -40,6 +43,7 @@
                         <th>Kaprodi</th>
                         <th>Sekretaris</th>
                         <th>Nama Fakultas</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -50,6 +54,15 @@
                   <td>{{ $item->kaprodi }}</td>
                   <td>{{ $item->sekretaris }}</td>
                   <td>{{ $item->fakultas->nama}}</td>
+                  <td>
+                  <a href="{{ route('prodi.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a>
+                    <form method="POST" action="{{ route('prodi.destroy', $item->id) }}">
+                      @csrf
+                      <input name="_method" type="hidden" value="DELETE">
+                      <button type="submit" class="btn btn-xs btn-danger btn-rounded show_confirm"
+                          data-toggle="tooltip" title='Delete'
+                          data-nama='{{ $item->nama }}'><i class="bi bi-trash"></i></button>
+                  </td>
                   </tr>
                   @endforeach
                     </tbody>

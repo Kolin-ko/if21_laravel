@@ -282,35 +282,10 @@
               data-accordion="false"
             >
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-speedometer"></i>
-                  <p>
-                    Dashboard
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
+                <a href="{{ url('/dashboard') }}" class="nav-link">
+                  <i class="nav-icon bi bi-speedometer"><p>Dashboard</p></i>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a class='nav-link' href='/dist/pages/'>
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class='nav-link' href='/dist/pages/index2'>
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class='nav-link' href='/dist/pages/index3'>
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v3</p>
-                    </a>
-                  </li>
-                </ul>
               </li>
-
               <li class="nav-item">
                 <a class='nav-link' href='{{route('fakultas.index')}}'>
                   <i class="nav-icon bi bi-book-fill"></i>
@@ -426,7 +401,35 @@
         }
       });
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!--end::OverlayScrollbars Configure-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var nama = $(this).data("nama");
+            event.preventDefault();
+            swal({
+                    title: `Apakah Anda yakin ingin menghapus data ${nama} ini?`,
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
+    <script>
+      swal.fire()({
+        title: 'Good Job!',
+        text: '{{ Session('success') }}',
+        icon: 'success'
+      });
+      </script>
     <!--end::Script-->
   </body>
   <!--end::Body-->
