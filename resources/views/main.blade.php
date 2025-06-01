@@ -62,9 +62,10 @@
                 <i class="bi bi-list"></i>
               </a>
             </li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Fakultas</a></li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Program Studi</a></li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Mahasiswa</a></li>
+            <li class="nav-item d-none d-md-block"><a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a></li>
+            <li class="nav-item d-none d-md-block"><a href="{{route('fakultas.index')}}" class="nav-link">Fakultas</a></li>
+            <li class="nav-item d-none d-md-block"><a href="{{route('prodi.index')}}" class="nav-link">Program Studi</a></li>
+            <li class="nav-item d-none d-md-block"><a href="{{route('mahasiswa.index')}}" class="nav-link">Mahasiswa</a></li>
           </ul>
           <!--end::Start Navbar Links-->
           <!--begin::End Navbar Links-->
@@ -302,6 +303,12 @@
                 <a class='nav-link' href='{{route('mahasiswa.index')}}'>
                   <i class="nav-icon bi bi-people-fill"></i>
                   <p>Daftar Mahasiswa</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a class='nav-link' href='{{route('sesi.index')}}'>
+                  <i class="nav-icon bi bi-people-fill"></i>
+                  <p>Sesi</p>
                 </a>
               </li>
 
