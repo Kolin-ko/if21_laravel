@@ -8,38 +8,34 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<figure class="highcharts-figure">
-    <div id="container"></div>
-    <p class="highcharts-description">
-        A basic column chart comparing estimated corn and wheat production
-        in some countries.
 
-        The chart is making use of the axis crosshair feature, to highlight
-        the hovered country.
-    </p>
-</figure>
 
-<figure class="highcharts-figure">
-    <div id="container-asalsma"></div>
-    <p class="highcharts-description">
-        A basic column chart comparing estimated corn and wheat production
-        in some countries.
+<div class="row">
+    <div class="col-lg-6">
+        <figure class="highcharts-figure">
+            <div id="container"></div>
+        </figure>
+    </div>
+    <div class="col-lg-6">
+        <figure class="highcharts-figure">
+            <div id="container-asalsma"></div>
+        </figure>
+    </div>
+    <div class="col-lg-6">
+        <figure class="highcharts-figure">
+            <div id="container-tahunmasuk"></div>
+        </figure>
+    </div>
+</div>
 
-        The chart is making use of the axis crosshair feature, to highlight
-        the hovered country.
-    </p>
-</figure>
+{{-- <p class="highcharts-description">
+    A basic column chart comparing estimated corn and wheat production
+    in some countries.
 
-<figure class="highcharts-figure">
-    <div id="container-tahunmasuk"></div>
-    <p class="highcharts-description">
-        A basic column chart comparing estimated corn and wheat production
-        in some countries.
+    The chart is making use of the axis crosshair feature, to highlight
+    the hovered country.
+</p> --}}
 
-        The chart is making use of the axis crosshair feature, to highlight
-        the hovered country.
-    </p>
-</figure>
 
 {{-- CSS --}}
 <style>
@@ -108,8 +104,7 @@ Highcharts.chart('container', {
     },
     subtitle: {
         text:
-            'Source: <a target="_blank" ' +
-            'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>'
+            'Source: Universitas MDP '
     },
     xAxis: {
         categories: [
@@ -154,12 +149,11 @@ Highcharts.chart('container-asalsma', {
         type: 'column'
     },
     title: {
-        text: 'Jumlah Asal Sma'
+        text: 'Jumlah Mahasiswa Berdasarkan Asal Sma'
     },
     subtitle: {
         text:
-            'Source: <a target="_blank" ' +
-            'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>'
+            'Source: Universitas MDP '
     },
     xAxis: {
         categories: [
@@ -176,11 +170,11 @@ Highcharts.chart('container-asalsma', {
     yAxis: {
         min: 0,
         title: {
-            text: 'Jumlah'
+            text: 'Mahasiswa'
         }
     },
     tooltip: {
-        valueSuffix: 'Orang'
+        valueSuffix: '(Orang)'
     },
     plotOptions: {
         column: {
@@ -190,13 +184,14 @@ Highcharts.chart('container-asalsma', {
     },
     series: [
         {
-            name: 'Asal sma',
+            name: 'mahasiswa',
             data: [@foreach ($mahasiswaasalsma as $item)
             {{  $item -> jumlah }},
             @endforeach]
         }
     ]
 });
+
 Highcharts.chart('container-tahunmasuk', {
     chart: {
         type: 'column'
@@ -206,29 +201,28 @@ Highcharts.chart('container-tahunmasuk', {
     },
     subtitle: {
         text:
-            'Source: <a target="_blank" ' +
-            'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>'
+            'Source: Universitas MDP '
     },
     xAxis: {
         categories: [
             @foreach ($mahasiswatahunmasuk as $item)
-            '{{ $item -> tahun }}'
+            '20{{ $item -> tahun }}' ,
             @endforeach
 
         ],
         crosshair: true,
         accessibility: {
-            description: 'Program Studi'
+            description: 'Tahun Masuk'
         }
     },
     yAxis: {
         min: 0,
         title: {
-            text: 'Jumlah'
+            text: 'Mahasiswa'
         }
     },
     tooltip: {
-        valueSuffix: 'Orang'
+        valueSuffix: ' (Orang)'
     },
     plotOptions: {
         column: {
@@ -238,7 +232,7 @@ Highcharts.chart('container-tahunmasuk', {
     },
     series: [
         {
-            name: 'Asal sma',
+            name: 'mahasiswa',
             data: [@foreach ($mahasiswatahunmasuk as $item)
             {{  $item -> jumlah }},
             @endforeach]

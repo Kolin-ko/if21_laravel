@@ -210,7 +210,7 @@
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
-                <span class="d-none d-md-inline">Alexander Pierce</span>
+                <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
@@ -221,8 +221,7 @@
                     alt="User Image"
                   />
                   <p>
-                    Alexander Pierce - Web Developer
-                    <small>Member since Nov. 2023</small>
+                    {{ Auth::user()->name }} - {{ Auth::user()->email }}
                   </p>
                 </li>
                 <!--end::User Image-->
@@ -241,6 +240,16 @@
                 <li class="user-footer">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                   <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+                  <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-responsive-nav-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
+                        </form>
                 </li>
                 <!--end::Menu Footer-->
               </ul>
@@ -284,7 +293,8 @@
             >
               <li class="nav-item">
                 <a href="{{ url('/dashboard') }}" class="nav-link">
-                  <i class="nav-icon bi bi-speedometer"><p>Dashboard</p></i>
+                  <i class="nav-icon bi bi-speedometer"></i>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">

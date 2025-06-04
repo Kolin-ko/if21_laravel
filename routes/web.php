@@ -14,13 +14,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/dashboard', DashboardController::class);
-Route::resource('/fakultas', FakultasController::class);
-Route::resource('/prodi', ProdiController::class);
-Route::resource('/mahasiswa', MahasiswaController::class);
-Route::resource('sesi', SesiController::class);
-Route::resource('/mata_kuliah', MataKuliahController::class);
-Route::resource('/jadwal', JadwalController::class);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -31,5 +24,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');;
+Route::resource('/fakultas', FakultasController::class);
+Route::resource('/prodi', ProdiController::class);
+Route::resource('/mahasiswa', MahasiswaController::class);
+Route::resource('sesi', SesiController::class);
+Route::resource('/mata_kuliah', MataKuliahController::class);
+Route::resource('/jadwal', JadwalController::class);
 
 require __DIR__.'/auth.php';
