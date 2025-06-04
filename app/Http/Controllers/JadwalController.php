@@ -47,7 +47,7 @@ class JadwalController extends Controller
 
         // simpan ke tabel jadwal
         Jadwal::create($input);
-        // redirect ke route fakultas.index
+        // redirect ke route jadwal.index
         return redirect() -> route('jadwal.index')
                             ->with('success', 'Jadwal berhasil disimpan');
 
@@ -82,6 +82,8 @@ class JadwalController extends Controller
      */
     public function destroy(jadwal $jadwal)
     {
-        //
+        $jadwal->delete();
+        return redirect()->route('jadwal.index')
+                         ->with('success', 'Jadwal berhasil dihapus');
     }
 }

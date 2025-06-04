@@ -71,7 +71,6 @@ class SesiController extends Controller
      */
     public function destroy(sesi $sesi)
     {
-        $dd($sesi);
         $sesi->delete();
         return redirect()->route('sesi.index')
                          ->with('success', 'Sesi berhasil dihapus');

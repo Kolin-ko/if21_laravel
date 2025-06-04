@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="tahun_akademik" class="form-label">Tahun Akademik</label>
-                            <input type="text" class="form-control" name="kode_mk">
+                            <input type="text" class="form-control" name="tahun_akademik">
                         </div>
                         <div class="mb-3">
                             <label for="kode_smt" class="form-label">Kode Semester</label>

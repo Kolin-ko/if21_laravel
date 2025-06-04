@@ -54,18 +54,18 @@
                   <td>{{ $item->kode_smt }}</td>
                   <td>{{ $item->kelas }}</td>
                   <td>{{ $item->mata_kuliah->nama }}</td>
-                  <td>{{ $item->users->name }}</td>
-                  <td>{{ $item->sesi->id }} </td>
-                  {{-- <td>
-                  <a href="{{ route('jadwal.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a>
-                    <form method="POST" action="{{ route('jadwal;.destroy', $item->id) }}">
+                  <td>{{ $item->dosen->name }}</td>
+                  <td>{{ $item->sesi->nama }} </td>
+                  <td>
+                  {{-- <a href="{{ route('jadwal.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a> --}}
+                    <form method="POST" action="{{ route('jadwal.destroy', $item->id) }}">
                       @csrf
                       <input name="_method" type="hidden" value="DELETE">
                       <button type="submit" class="btn btn-xs btn-danger btn-rounded show_confirm"
                           data-toggle="tooltip" title='Delete'
                           data-nama='{{ $item->nama }}'><i class="bi bi-trash"></i></button>
                     </form>
-                  </td> --}}
+                  </td>
                   </tr>
                   @endforeach
                     </tbody>

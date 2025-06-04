@@ -15,8 +15,8 @@ class jadwal extends Model
     public function mata_kuliah() {
         return $this->belongsTo(Mata_kuliah::class, 'mata_kuliah_id', 'id');
     }
-    public function users() {
-        return $this->belongsTo(Users::class, 'dosen_id', 'name');
+    public function dosen() {
+        return $this->belongsTo(User::class, 'dosen_id', 'id');
     }
     public function sesi() {
         return $this->belongsTo(Sesi::class, 'sesi_id', 'id');
