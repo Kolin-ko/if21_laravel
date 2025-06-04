@@ -321,6 +321,18 @@
                   <p>Sesi</p>
                 </a>
               </li>
+               <li class="nav-item">
+                <a class='nav-link' href='{{route('mata_kuliah.index')}}'>
+                  <i class="nav-icon bi bi-people-fill"></i>
+                  <p>Mata Kuliah</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a class='nav-link' href='{{route('jadwal.index')}}'>
+                  <i class="nav-icon bi bi-people-fill"></i>
+                  <p>Jadwal</p>
+                </a>
+              </li>
 
             </ul>
             <!--end::Sidebar Menu-->

@@ -10,7 +10,6 @@ class Prodi extends Model
 use HasUuids;
     protected $table = 'prodi';
 
-    use HasUuids;
     protected $fillable = ['nama', 'singkatan', 'kaprodi', 'sekretaris', 'fakultas_id'];
 
 

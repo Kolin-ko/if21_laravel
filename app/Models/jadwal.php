@@ -2,9 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
 class jadwal extends Model
 {
-    //
+    use HasUuids;
+    protected $fillable = ['tahun_akademik', 'kode_smt', 'kelas', 'mata_kuliah_id', 'dosen_id', 'sesi_id'];
+
+    protected $table = 'jadwal';
+
+    public function mata_kuliah() {
+        return $this->belongsTo(Mata_kuliah::class, 'mata_kuliah_id', 'id');
+    }
+    public function users() {
+        return $this->belongsTo(Users::class, 'dosen_id', 'name');
+    }
+    public function sesi() {
+        return $this->belongsTo(Sesi::class, 'sesi_id', 'id');
+    }
 }

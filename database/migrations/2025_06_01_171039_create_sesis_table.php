@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sesis', function (Blueprint $table) {
-            $table->uuid('id');
+        Schema::create('sesi', function (Blueprint $table) {
+            $table->increments('id');
             $table->primary('id');
-            $table->string('nama', 30);
+            $table->string('nama', 11);
             $table->timestamps();
         });
+        //  DB::statement('ALTER TABLE sesi AUTO_INCREMENT = 1000;');
     }
 
     /**
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sesis');
+        Schema::dropIfExists('sesi');
     }
 };

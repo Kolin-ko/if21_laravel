@@ -36,11 +36,10 @@ class ProdiController extends Controller
             'singkatan' => 'required',
             'kaprodi' => 'required',
             'sekretaris' => 'required',
-            'fakultas_id' => 'required'
+            'fakultas_id' => 'required',
         ]);
 
         // simpan ke tabel fakultas
-        Prodi::create($input);
         Prodi::create($input);
 
         // redirect ke route fakultas.index

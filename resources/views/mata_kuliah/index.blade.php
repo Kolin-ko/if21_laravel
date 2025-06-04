@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Sesi')
+@section('title', 'Mata Kuliah')
 @section('content')
 
 <!--begin::Row-->
@@ -9,7 +9,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Sesi</h3>
+        <h3 class="card-title">Mata Kuliah</h3>
         <div class="card-tools">
           <button
           type="button"
@@ -29,26 +29,28 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <a href="{{ route('sesi.create') }}" type="button" class="btn btn-primary btn-rounded btn-fw"><i class="bi bi-database-add"></i></a>
+                  <a href="{{ route('mata_kuliah.create') }}" type="button" class="btn btn-primary btn-rounded btn-fw"><i class="bi bi-database-add"></i></a>
                   @if (Session::get('success'))
                   <div class="alert alert-success mt-3">{{ Session::get('success') }}</div>
               @endif
                   <table class = 'table'>
                     <thead>
                       <tr>
-                        <th>No</th>
-                        <th>Nama Sesi</th>
+                        <th>Kode MK</th>
+                        <th>Nama</th>
+                        <th>Program Studi</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-                  @foreach ($sesi as $item)
+                  @foreach ($mata_kuliah as $item)
                   <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->nama }}</td>
+                  <td>{{ $item->kode_mk }}</td>
+                  <td>{{ $item->nama }}</td>
+                  <td>{{ $item->prodi->nama }}</td>
                   <td>
-                  {{-- <a href="{{ route('sesi.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a> --}}
-                    <form method="POST" action="{{ route('sesi.destroy', $item->id) }}">
+                  {{-- <a href="{{ route('mata_kuliah.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a> --}}
+                    <form method="POST" action="{{ route('mata_kuliah.destroy', $item->id) }}">
                       @csrf
                       <input name="_method" type="hidden" value="DELETE">
                       <button type="submit" class="btn btn-xs btn-danger btn-rounded show_confirm"

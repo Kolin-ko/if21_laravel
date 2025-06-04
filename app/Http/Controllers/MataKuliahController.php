@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\mata_kuliah;
 use App\Http\Controllers\Controller;
+use App\Models\mata_kuliah;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class MataKuliahController extends Controller
@@ -13,7 +14,8 @@ class MataKuliahController extends Controller
      */
     public function index()
     {
-        //
+        $mata_kuliah = Mata_kuliah::all();
+        return view('mata_kuliah.index', compact('mata_kuliah'));
     }
 
     /**
@@ -21,7 +23,8 @@ class MataKuliahController extends Controller
      */
     public function create()
     {
-        //
+        $prodi = Prodi::all();
+        return view('mata_kuliah.create', compact('prodi'));
     }
 
     /**
@@ -29,7 +32,18 @@ class MataKuliahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          $input = $request->validate([
+            'kode_mk' => 'required|unique:mata_kuliah',
+            'nama' => 'required',
+            'prodi_id' => 'required',
+        ]);
+
+        // simpan ke tabel fakultas
+        Mata_kuliah::create($input);
+
+        // redirect ke route fakultas.index
+        return redirect() -> route('mata_kuliah.index')
+                            ->with('success', 'Mata Kuliah berhasil disimpan');
     }
 
     /**
@@ -61,6 +75,8 @@ class MataKuliahController extends Controller
      */
     public function destroy(mata_kuliah $mata_kuliah)
     {
-        //
+        $mata_kuliah->delete();
+        return redirect()->route('mata_kuliah.index')
+                         ->with('success', 'Mata Kuliah berhasil dihapus');
     }
 }

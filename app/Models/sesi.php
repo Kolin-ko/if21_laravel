@@ -9,6 +9,6 @@ class sesi extends Model
 {
     use HasUuids;
 
-    protected $sesi = 'sesi';
+    protected $table = 'sesi';
     protected $fillable = ['nama'];
 }

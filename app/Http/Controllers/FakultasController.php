@@ -79,7 +79,7 @@ class FakultasController extends Controller
         return redirect()->route('fakultas.index')
                          ->with('success', 'Fakultas berhasil diupdate');
     }
-        
+
     /**
      * Remove the specified resource from storage.
      */

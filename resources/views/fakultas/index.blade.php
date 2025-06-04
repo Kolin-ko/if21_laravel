@@ -29,7 +29,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <a href="{{ route('prodi.create') }}" type="button" class="btn btn-primary btn-rounded btn-fw"><i class="bi bi-database-add"></i></a>
+                  <a href="{{ route('fakultas.create') }}" type="button" class="btn btn-primary btn-rounded btn-fw"><i class="bi bi-database-add"></i></a>
                   @if (Session::get('success'))
                   <div class="alert alert-success mt-3">{{ Session::get('success') }}</div>
               @endif
