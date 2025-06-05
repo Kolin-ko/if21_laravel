@@ -39,7 +39,7 @@ class JadwalController extends Controller
         $input = $request->validate([
             'tahun_akademik' => 'required',
             'kode_smt' => 'required',
-            'kelas' => 'required|unique:jadwal',
+            'kelas' => 'required',
             'mata_kuliah_id' => 'required',
             'dosen_id' => 'required',
             'sesi_id' => 'required'
@@ -66,7 +66,7 @@ class JadwalController extends Controller
      */
     public function edit(jadwal $jadwal)
     {
-        
+
         $mata_kuliah = Mata_kuliah::all();
         $users = User::all();
         $sesi = Sesi::all();

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->string('tahun_akademik',10);
-            $table->string('kode_smt', 5);
+            $table->string('kode_smt', 10);
             $table->string('kelas', 5);
             $table->uuid('mata_kuliah_id');
             $table->foreign('mata_kuliah_id')->references('id')->on('mata_kuliah')->onDelete('restrict')->onUpdate('restrict');
