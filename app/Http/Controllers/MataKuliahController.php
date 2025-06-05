@@ -59,7 +59,8 @@ class MataKuliahController extends Controller
      */
     public function edit(mata_kuliah $mata_kuliah)
     {
-        //
+        $prodi = Prodi::all();
+        return view('mata_kuliah.edit', compact('mata_kuliah', 'prodi'));
     }
 
     /**
@@ -67,7 +68,14 @@ class MataKuliahController extends Controller
      */
     public function update(Request $request, mata_kuliah $mata_kuliah)
     {
-        //
+        $input = $request->validate([
+            'kode_mk' => 'required',
+            'nama' => 'required',
+            'prodi_id' => 'required'
+        ]);
+        $mata_kuliah->update($input);
+        return redirect()->route('mata_kuliah.index')
+                         ->with('success', 'Mata Kuliah berhasil diupdate');
     }
 
     /**

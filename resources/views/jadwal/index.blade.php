@@ -57,7 +57,7 @@
                   <td>{{ $item->dosen->name }}</td>
                   <td>{{ $item->sesi->nama }} </td>
                   <td>
-                  {{-- <a href="{{ route('jadwal.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a> --}}
+                  <a href="{{ route('jadwal.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a>
                     <form method="POST" action="{{ route('jadwal.destroy', $item->id) }}">
                       @csrf
                       <input name="_method" type="hidden" value="DELETE">

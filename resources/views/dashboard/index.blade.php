@@ -26,6 +26,11 @@
             <div id="container-tahunmasuk"></div>
         </figure>
     </div>
+     <div class="col-lg-6">
+        <figure class="highcharts-figure">
+            <div id="container-jumlahkelas"></div>
+        </figure>
+    </div>
 </div>
 
 {{-- <p class="highcharts-description">
@@ -94,7 +99,6 @@
 
 {{-- JavaScript --}}
 <script>
-
 Highcharts.chart('container', {
     chart: {
         type: 'column'
@@ -109,7 +113,7 @@ Highcharts.chart('container', {
     xAxis: {
         categories: [
             @foreach ($mahasiswaprodi as $item)
-            '{{ $item -> nama }}'
+            '{{ $item -> nama }}'@if (!$loop->last),@endif
             @endforeach
 
         ],
@@ -137,7 +141,7 @@ Highcharts.chart('container', {
         {
             name: 'mahasiswa',
             data: [@foreach ($mahasiswaprodi as $item)
-            {{  $item -> jumlah }},
+            {{  $item -> jumlah }}@if (!$loop->last),@endif
             @endforeach]
         }
     ]
@@ -158,7 +162,7 @@ Highcharts.chart('container-asalsma', {
     xAxis: {
         categories: [
             @foreach ($mahasiswaasalsma as $item)
-            '{{ $item -> asal_sma }}'
+            '{{ $item -> asal_sma }}'@if (!$loop->last),@endif
             @endforeach
 
         ],
@@ -186,7 +190,7 @@ Highcharts.chart('container-asalsma', {
         {
             name: 'mahasiswa',
             data: [@foreach ($mahasiswaasalsma as $item)
-            {{  $item -> jumlah }},
+            {{  $item -> jumlah }}@if (!$loop->last),@endif
             @endforeach]
         }
     ]
@@ -206,7 +210,7 @@ Highcharts.chart('container-tahunmasuk', {
     xAxis: {
         categories: [
             @foreach ($mahasiswatahunmasuk as $item)
-            '20{{ $item -> tahun }}' ,
+            '20{{ $item -> tahun }}'@if (!$loop->last),@endif
             @endforeach
 
         ],
@@ -234,9 +238,67 @@ Highcharts.chart('container-tahunmasuk', {
         {
             name: 'mahasiswa',
             data: [@foreach ($mahasiswatahunmasuk as $item)
-            {{  $item -> jumlah }},
+            {{  $item -> jumlah }}@if (!$loop->last),@endif
             @endforeach]
         }
+    ]
+});
+Highcharts.chart('container-jumlahkelas', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Jumlah Kelas Setiap Prodi per Tahun'
+    },
+    subtitle: {
+        text:
+            'Source: Universitas MDP '
+    },
+    xAxis: {
+        categories: [
+            @foreach ($grafikjumlahkelasprodi as $item)
+            '{{ $item->tahun_akademik }}'@if (!$loop->last),@endif
+            @endforeach
+
+        ],
+        crosshair: true,
+        accessibility: {
+            description: 'Tahun Masuk'
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah Kelas'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' (Kelas)'
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [
+        @foreach (collect($grafikjumlahkelasprodi)->pluck('nama')->unique() as $prodi)
+        {
+            name: '{{ $prodi }}',
+            data: [
+                @foreach (collect($grafikjumlahkelasprodi)->pluck('tahun_akademik')->unique() as $tahun)
+                    {{
+                        optional(
+                            collect($grafikjumlahkelasprodi)
+                                ->first(function($row) use ($prodi, $tahun) {
+                                    return $row->nama == $prodi && $row->tahun_akademik == $tahun;
+                                })
+                        )->jumlah ?? 0
+                    }}@if (!$loop->last),@endif
+                @endforeach
+            ]
+        }@if (!$loop->last),@endif
+        @endforeach
     ]
 });
 </script>

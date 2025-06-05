@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
 class sesi extends Model
 {
-    use HasUuids;
 
     protected $table = 'sesi';
-    protected $fillable = ['nama'];
+    protected $fillable = ['id','nama'];
 }

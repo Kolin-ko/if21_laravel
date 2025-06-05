@@ -47,7 +47,7 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->nama }}</td>
                   <td>
-                  {{-- <a href="{{ route('sesi.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a> --}}
+                  <a href="{{ route('sesi.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a>
                     <form method="POST" action="{{ route('sesi.destroy', $item->id) }}">
                       @csrf
                       <input name="_method" type="hidden" value="DELETE">

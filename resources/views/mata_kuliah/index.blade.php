@@ -49,7 +49,7 @@
                   <td>{{ $item->nama }}</td>
                   <td>{{ $item->prodi->nama }}</td>
                   <td>
-                  {{-- <a href="{{ route('mata_kuliah.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a> --}}
+                  <a href="{{ route('mata_kuliah.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a>
                     <form method="POST" action="{{ route('mata_kuliah.destroy', $item->id) }}">
                       @csrf
                       <input name="_method" type="hidden" value="DELETE">

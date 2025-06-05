@@ -32,7 +32,8 @@ class SesiController extends Controller
     public function store(Request $request)
     {
          $input = $request->validate([
-            'nama' => 'required|unique:nama'
+            'id' => 'required|unique:sesi',
+            'nama' => 'required'
         ]);
         // simpan ke tabel sesi
         Sesi::create($input);
@@ -55,7 +56,7 @@ class SesiController extends Controller
      */
     public function edit(sesi $sesi)
     {
-        //
+        return view('sesi.edit', compact('sesi'));
     }
 
     /**
@@ -63,7 +64,13 @@ class SesiController extends Controller
      */
     public function update(Request $request, sesi $sesi)
     {
-        //
+        $input = $request->validate([
+            'id' => 'required',
+            'nama' => 'required'
+        ]);
+        $sesi->update($input);
+        return redirect()->route('sesi.index')
+                         ->with('success', 'Sesi berhasil diupdate');
     }
 
     /**
