@@ -46,7 +46,7 @@ class SesiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(sesi $sesi)
+    public function show(Sesi $sesi)
     {
         //
     }
@@ -54,7 +54,7 @@ class SesiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(sesi $sesi)
+    public function edit(Sesi $sesi)
     {
         return view('sesi.edit', compact('sesi'));
     }
@@ -62,7 +62,7 @@ class SesiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, sesi $sesi)
+    public function update(Request $request, Sesi $sesi)
     {
         $input = $request->validate([
             'id' => 'required',
@@ -76,7 +76,7 @@ class SesiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(sesi $sesi)
+    public function destroy(Sesi $sesi)
     {
         $sesi->delete();
         return redirect()->route('sesi.index')
