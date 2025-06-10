@@ -13,7 +13,7 @@ class jadwal extends Model
     protected $table = 'jadwal';
 
     public function mata_kuliah() {
-        return $this->belongsTo(Mata_Kuliah::class, 'mata_kuliah_id', 'id');
+        return $this->belongsTo(MataKuliah::class, 'mata_kuliah_id', 'id');
     }
     public function dosen() {
         return $this->belongsTo(User::class, 'dosen_id', 'id');

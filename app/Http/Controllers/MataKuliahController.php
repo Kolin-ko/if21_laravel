@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\mata_kuliah;
+use App\Models\MataKuliah;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,7 @@ class MataKuliahController extends Controller
      */
     public function index()
     {
-        $mata_kuliah = Mata_kuliah::all();
+        $mata_kuliah = MataKuliah::all();
         return view('mata_kuliah.index', compact('mata_kuliah'));
     }
 
@@ -39,7 +39,7 @@ class MataKuliahController extends Controller
         ]);
 
         // simpan ke tabel fakultas
-        Mata_kuliah::create($input);
+        MataKuliah::create($input);
 
         // redirect ke route fakultas.index
         return redirect() -> route('mata_kuliah.index')
@@ -49,7 +49,7 @@ class MataKuliahController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(mata_kuliah $mata_kuliah)
+    public function show(MataKuliah $mata_kuliah)
     {
         //
     }
@@ -57,7 +57,7 @@ class MataKuliahController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(mata_kuliah $mata_kuliah)
+    public function edit(MataKuliah $mata_kuliah)
     {
         $prodi = Prodi::all();
         return view('mata_kuliah.edit', compact('mata_kuliah', 'prodi'));
@@ -66,7 +66,7 @@ class MataKuliahController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, mata_kuliah $mata_kuliah)
+    public function update(Request $request, MataKuliah $mata_kuliah)
     {
         $input = $request->validate([
             'kode_mk' => 'required',
@@ -81,7 +81,7 @@ class MataKuliahController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(mata_kuliah $mata_kuliah)
+    public function destroy(MataKuliah $mata_kuliah)
     {
         $mata_kuliah->delete();
         return redirect()->route('mata_kuliah.index')
