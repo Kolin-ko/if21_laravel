@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
-class jadwal extends Model
+class Jadwal extends Model
 {
     use HasUuids;
     protected $fillable = ['tahun_akademik', 'kode_smt', 'kelas', 'mata_kuliah_id', 'dosen_id', 'sesi_id'];

@@ -13,8 +13,7 @@ class SesiController extends Controller
      */
     public function index()
     {
-        $sesi = Sesi::all(); // SELECT * from sesi
-        // dd($fakultas);
+        $sesi = Sesi::all(); // SELECT * from ses
         return view('sesi.index', compact('sesi'));
     }
 
