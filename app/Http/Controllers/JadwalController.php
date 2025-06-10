@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\jadwal;
+use App\Models\Jadwal;
 use App\Models\MataKuliah;
-use App\Models\sesi;
+use App\Models\Sesi;
 use App\Models\User;
 use Illuminate\Http\Request;
 
