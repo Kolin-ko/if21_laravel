@@ -67,7 +67,7 @@
                   <a href="{{ route('mahasiswa.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a>
                     <form method="POST" action="{{ route('mahasiswa.destroy', $item->id) }}">
                       @csrf
-                      <input name="_method" type="hidden" value="DELETE">
+                      <input name="_method" type="hidden" valuephp ="DELETE">
                       <button type="submit" class="btn btn-xs btn-danger btn-rounded show_confirm"
                           data-toggle="tooltip" title='Delete'
                           data-nama='{{ $item->nama }}'><i class="bi bi-trash"></i></button>
