@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('materis', function (Blueprint $table) {
+        Schema::create('materi', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
             $table->uuid('mata_kuliah_id');
             $table->foreign('mata_kuliah_id')->references('id')->on('mata_kuliah')->onDelete('restrict')->onUpdate('restrict');
-             $table->uuid('dosen_id');
+            $table->uuid('dosen_id');
             $table->foreign('dosen_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
             $table->integer('pertemuan');
             $table->string('pokok_bahasan', 255);
-            $table->string('file_materi', 50);
+            $table->string('file_materi', 255);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materis');
+        Schema::dropIfExists('materi');
     }
 };
