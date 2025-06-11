@@ -60,7 +60,7 @@
                   <td>{{ $item->tanggal_lahir }}</td>
                   <td>{{ $item->jk }}</td>
                   <td>{{ $item->asal_sma }}</td>
-                  <td><img src="{{ asset('storage/images/' . $item->foto) }}" alt="Foto" width="50"></td>
+                  <td><img src=" {{ $item->foto }}" alt="Foto" width="80px"></td>
                   <td>{{ $item->prodi->nama }}</td>
                   <td>{{ $item->prodi->fakultas->nama }} </td>
                   <td>
