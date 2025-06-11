@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
 class Materi extends Model
@@ -15,6 +16,8 @@ class Materi extends Model
         'pokok_bahasan',
         'file_materi'
     ];
+    
+    use HasUuids;
 
     public function mataKuliah()
     {

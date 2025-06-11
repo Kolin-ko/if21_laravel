@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreign('dosen_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
             $table->integer('pertemuan');
             $table->string('pokok_bahasan', 255);
-            $table->string('file_materi', 255);
+            $table->string('file_materi');
             $table->timestamps();
         });
     }

@@ -53,14 +53,14 @@
                   <td>{{ $item->dosen->name }}</td>
                   <td>{{ $item->pertemuan }}</td>
                   <td>{{ $item->pokok_bahasan }}</td>
-                  <td>
-                    <a href="{{ asset('storage/images/' . $item->file_materi) }}" target="_blank">
-                        {{ $item->file_materi }}
+                 <td>
+                    <a href="{{ $item->file_materi }}" target="_blank">
+                        {{ \Illuminate\Support\Str::limit($item->file_materi) }}
                     </a>
-                    <a href="{{ asset('storage/images/' . $item->file_materi) }}" download class="btn btn-sm btn-success ms-2">
+                    <a href="{{ $item->file_materi }}" download class="btn btn-sm btn-success ms-2">
                         <i class="bi bi-download"></i>
                     </a>
-                  </td>
+                </td>
                   <td>
                   <a href="{{ route('materi.edit', $item->id) }}" class="btn btn-xs btn-warning"><i class="bi bi-pencil-fill"></i></a>
                     <form method="POST" action="{{ route('materi.destroy', $item->id) }}">
