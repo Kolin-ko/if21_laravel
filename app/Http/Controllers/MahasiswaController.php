@@ -39,7 +39,7 @@ class MahasiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'jk' => 'required',
             'asal_sma' => 'required',
-            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:5120',
             'prodi_id' => 'required',
         ]);
 
@@ -75,7 +75,7 @@ class MahasiswaController extends Controller
         Mahasiswa::create($input);
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa created successfully.');
     }
-    
+
     /**
      * Display the specified resource.
      */
