@@ -41,7 +41,7 @@ class MateriController extends Controller
             'dosen_id' => 'required',
             'pertemuan' => 'required',
             'pokok_bahasan' => 'required',
-            'file_materi' => 'required|file|mimes:pdf|max:2048',
+            'file_materi' => 'required|file|mimes:pdf|max:5120',
         ]);
        if ($request->hasFile('file_materi')) {
             try {
@@ -105,7 +105,7 @@ class MateriController extends Controller
             'dosen_id' => 'required',
             'pertemuan' => 'required',
             'pokok_bahasan' => 'required',
-            'file_materi' => 'nullable|file|mimes:pdf|max:2048',
+            'file_materi' => 'required|file|mimes:pdf|max:5120'
         ]);
         $input = $request->all();
         if ($request->hasFile('file_materi')) {
