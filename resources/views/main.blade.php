@@ -333,6 +333,12 @@
                   <p>Jadwal</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class='nav-link' href='{{route('materi.index')}}'>
+                  <i class="nav-icon bi bi-people-fill"></i>
+                  <p>Materi Perkuliahan</p>
+                </a>
+              </li>
 
             </ul>
             <!--end::Sidebar Menu-->

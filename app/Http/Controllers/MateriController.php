@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Materi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class MateriController extends Controller
 {
@@ -40,15 +41,39 @@ class MateriController extends Controller
             'pokok_bahasan' => 'required',
             'file_materi' => 'required|file|mimes:pdf|max:2048',
         ]);
-        $input = $request->all();
-        if ($request->hasFile('file_materi')) {
-            $file = $request->file('file_materi');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            // Simpan file ke dalam folder public/materi
-            $file->move(public_path('materi'), $filename);
-            $input['file_materi'] = $filename;
+       if ($request->hasFile('file_materi')) {
+            try {
+                $file = $request->file('file_materi');
+                $response = Http::asMultipart()->post(
+                    'https://api.cloudinary.com/v1_1/' . env('CLOUDINARY_CLOUD_NAME') . '/image/upload',
+                    [
+                        [
+                            'name'     => 'file',
+                            'contents' => fopen($file->getRealPath(), 'r'),
+                            'filename' => $file->getClientOriginalName(),
+                        ],
+                        [
+                            'name'     => 'upload_preset',
+                            'contents' => env('CLOUDINARY_UPLOAD_PRESET'),
+                        ],
+                    ]
+                );
+
+                $result = $response->json();
+                if (isset($result['secure_url'])) {
+                    $input['file_materi'] = $result['secure_url'];
+                } else {
+                    return back()->withErrors(['file_materi' => 'Cloudinary upload error: ' . ($result['error']['message'] ?? 'Unknown error')]);
+                }
+            } catch (\Exception $e) {
+                return back()->withErrors(['file_materi' => 'Cloudinary error: ' . $e->getMessage()]);
+            }
         }
+
+        Materi::create($input);
+        return redirect()->route('materi.index')->with('success', 'Materi created successfully.');
     }
+
 
     /**
      * Display the specified resource.
