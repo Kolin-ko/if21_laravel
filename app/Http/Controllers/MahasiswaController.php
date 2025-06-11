@@ -42,8 +42,7 @@ class MahasiswaController extends Controller
             'foto' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:5120',
             'prodi_id' => 'required',
         ]);
-
-       if ($request->hasFile('foto')) {
+        if ($request->hasFile('foto')) {
             try {
                 $file = $request->file('foto');
                 $response = Http::asMultipart()->post(
