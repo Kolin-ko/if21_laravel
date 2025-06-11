@@ -5,10 +5,12 @@ use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MataKuliahController;
+use App\Http\Controllers\MateriController;
 use App\Http\Controllers\ProdiController;
-use App\Http\Controllers\SesiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
