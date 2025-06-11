@@ -16,10 +16,10 @@ class Materi extends Model
         'pokok_bahasan',
         'file_materi'
     ];
-    
+
     use HasUuids;
 
-    public function mataKuliah()
+    public function mata_kuliah()
     {
         return $this->belongsTo(MataKuliah::class, 'mata_kuliah_id', 'id');
     }

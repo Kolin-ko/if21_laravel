@@ -47,7 +47,7 @@
                       </div>
                       <div class="mb-3">
                         <label for="file_materi" class="form-label">File Materi</label>
-                        <input type="file" class="form-control" name="file_materi">
+                        <input type="file" class="form-control" name="file_materi" accept="application/pdf">
                         @error('file_materi')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
