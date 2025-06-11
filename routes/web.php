@@ -32,5 +32,6 @@ Route::resource('/mahasiswa', MahasiswaController::class);
 Route::resource('/sesi', SesiController::class);
 Route::resource('/mata_kuliah', MataKuliahController::class);
 Route::resource('/jadwal', JadwalController::class);
+Route::resource('/materi', MateriController::class);
 
 require __DIR__.'/auth.php';
